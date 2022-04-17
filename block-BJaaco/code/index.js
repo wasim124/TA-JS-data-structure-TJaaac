@@ -105,8 +105,19 @@ console.log(revert(['Ryan', 'John', 'Bran'])); //['Bran', 'John', 'Ryan']
     clear(['Ryan', null, 0,  'John', 'Bran']); //['Bran', 'John', 'Ryan']
 */
 
-function clear(arr) {
+function isUnwanted(value){
+  return value == false || value == null || value == "" || value == undefined || value == 0 
+}
 
+
+function clear(arr) {
+ let final = [];
+ for(let value of arr){
+   if(!isUnwanted(value)){
+     final.push(value);
+   }
+ }
+ return final;
 }
 
 // Uncomment the code below and test the output
@@ -128,8 +139,12 @@ function clear(arr) {
     arrayToObj(['Ryan', 'John']); // {0: 'Ryan', 1: 'John'}
 */
 
-function arrayToObj() {
-  // your code
+function arrayToObj(arr) {
+  let final ={}
+  for(let i = 0; i < arr.length; i++){
+    final[i] = arr[i];
+  }
+  return final;
 }
 
 // Uncomment the code below and test the output
